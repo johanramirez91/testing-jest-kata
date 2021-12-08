@@ -12,17 +12,17 @@ const NUM_DAY = { 'mon': 1, 'tue': 2, 'wed': 3, 'thu': 4, 'fri': 5, 'sat': 6, 's
  * @param {int} openHour opciones (8,9,10,...,20,21,21,23,24)
  * @param {int} closeHour opciones (8,9,10,...,20,21,21,23,24)
  */
-export const createEvent = ( weekday, week, openHour, closeHour ) => {
+export const createEvent = (weekday, week, openHour, closeHour) => {
 
-    if((closeHour - openHour) < 0){
+    if ((closeHour - openHour) < 0) {
         throw new Error("Argumento ilegal en el horario de entrada.");
     }
 
-    if(week < 0){
+    if (week < 0) {
         throw new Error("Argumento ilegal para la semana, debe ser un valor positivo.");
     }
 
-    if(!Object.keys(NUM_DAY).some(key => key === weekday)){
+    if (!Object.keys(NUM_DAY).some(key => key === weekday)) {
         throw new Error("Argumento ilegal el dia de la semana, valores posibles; 'mon', 'tue', 'wed', 'thu', 'fri', 'sat' y 'sun'.");
     }
 
@@ -30,7 +30,7 @@ export const createEvent = ( weekday, week, openHour, closeHour ) => {
     const currentDay = new Date().getDay();
     const hour = new Date().getHours();
     const options = { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' };
-   
+
 
     function addDays(days) {
         return new Date(new Date().setDate(new Date().getDate() + days));
@@ -44,7 +44,7 @@ export const createEvent = ( weekday, week, openHour, closeHour ) => {
     }
 
     const date = getDateCalendar(numDay, currentDay);
-   
+
     return {
         title: "[SOFKA U] Meeting Room",
         description: "Mentoring and Practice",
